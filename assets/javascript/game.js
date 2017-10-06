@@ -4,10 +4,22 @@ var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 var userGuesses = [];
 var count = 10;
 
-$(document).ready(function() {
-    $("#theme").get(0).play();
+$(document).ready(function() {     
+
+  var audioElement = document.createElement("audio");
+      audioElement.setAttribute("src", "assets/songs/clockwork.mp3");
+
+        $("#theme-button").on("click", function() {
+          if (!audioElement.paused) {
+            audioElement.pause();           
+            $("#theme-button").text("Play Music");
+        } else {
+            audioElement.play();           
+          $("#theme-button").text("Stop Music");
+      }
+  });
 });
-//Make pause button work
+//Make theme starts on load
 
 function createLetterButtons() {
 
@@ -29,7 +41,7 @@ function createLetterButtons() {
       		//End the game if word is correct!
       	}else{
       		count -= 1;
-	      	$("#wrong-letters").append(this); //Need to fix this shit!
+	      	$("*#wrong-letters").appendTo(this); //Need to fix this shit!
 	      	console.log(count);
 	        if(count==0){
 	        	$("#buttons").remove();
