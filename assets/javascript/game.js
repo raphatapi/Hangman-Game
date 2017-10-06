@@ -41,7 +41,7 @@ function createLetterButtons() {
       		//End the game if word is correct!
       	}else{
       		count -= 1;
-	      	$("*#wrong-letters").appendTo(this); //Need to fix this shit!
+	      	$("#wrong-letters").append($(this).attr("data-letter")); //Need to fix this shit!
 	      	console.log(count);
 	        if(count==0){
 	        	$("#buttons").remove();
