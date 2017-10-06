@@ -1,3 +1,94 @@
 body {
-	background-image: url("../../assets/images/giphy.gif");
+	margin: 0;
+	padding: 0;
+	background-image: url("../../assets/images/tree.gif");
+	background-size: 100%;
 }
+
+h1 {
+	font-family: 'Creepster', cursive;
+}
+
+h5 {
+	margin: 5px 0;
+}
+
+p {
+	margin: 0;
+}
+
+.jumbotron{
+	padding: 10px;
+}
+
+.container-fluid {
+	background-color: #c8c8c8;
+}
+
+.page-header {
+	max-height: 50px;
+	margin: 50px auto;
+	color: white;
+	text-align: center;
+	font-size: 36px;
+	width: 460px;
+	border-bottom: solid white 1px;
+}
+
+.main-content {
+	width: 460px;
+	padding: 15px;
+	margin: auto;
+	height: 400px;
+	position: relative;
+	overflow: hidden;
+	background-color: #df8109;
+}
+
+.gap {
+	height: 30px;
+}
+
+.buttons-wrap {
+	margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+	body {
+		background-image: url("../../assets/images/tree.gif") no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+}
+
+@media (min-width: 768px) {
+	body {
+		background-image: url("../../assets/images/tree.gif") no-repeat center center bottom fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+}
+
+@media (min-width: 992px) {
+	body {
+		background-image: url("../../assets/images/tree.gif") no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+}
+
+@media (min-width: 1200px) {
+	body {
+		background-image: url("../../assets/images/tree.gif") no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+}	
