@@ -1,28 +1,33 @@
-//Words in the game
+//Declair variables for words, letters and count(max number of guesses)
+
 var words = ["strange", "eerie", "wraith", "specter", "haunt", "uncanny", "eldritch", "weird", "bizarre", "dreadful", "terror"];
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var userGuesses = [];
 var count = 6;
 
-$(document).ready(function() {     
+//Start music when page loads
+$(document).ready(function() {
 
+  //Create audio element (Captain Planet activity)
   var audioElement = document.createElement("audio");
       audioElement.setAttribute("src", "assets/songs/clockwork.mp3");
       audioElement.play();
       $("#theme-button").text("Pause Music");
 
+    //Use button to toggle music on/off
     $("#theme-button").on("click", function() {
+          //If it's not paused then pause it and change button text to "Play Music"
           if (!audioElement.paused) {
             audioElement.pause();           
             $("#theme-button").text("Play Music");
+          //Or do the opposite
         } else {
             audioElement.play();           
           $("#theme-button").text("Pause Music");
       }
   });
 });
-//Make theme starts on load
 
+//Create letter buttons (Fridge Game)
 function createLetterButtons() {
 
       for (var i=0; i<letters.length; i++) {
@@ -34,45 +39,50 @@ function createLetterButtons() {
 
       }
 
+      //Create click event to the buttons
       $(".letter-button").on("click", function(){
-      	if($("*#hidden-letter-" + $(this).attr("data-letter")).length !== 0){
+      	if($("*#hidden-letter-" + $(this).attr("data-letter")).length !== 0){ //* selects all hidden letters
       		$("*#hidden-letter-" + $(this).attr("data-letter")).text($(this).attr("data-letter"));
-          $(this).remove();
-          if($("#blank-word").children().text().indexOf("_") == -1){
+          $(this).remove();//Removes button from the DOM
+
+          //End game when last correct letter is chosen
+        if($("#blank-word").children().text().indexOf("_ ") == -1){
           $("#buttons").remove();
-          $("#title").text("Maybe death isn't the end");
-          $("#title").append("<br><button onclick='reloadPage()'>Play Again!</button>");
+          $("#title").text("Maybe death isn't the end"); //User wins
+          $("#title").append("<br><button onclick='reloadPage()'>Play Again!</button>"); //Restart game
           }
-      		
-      		//End the game if word is correct!
+      		//Decrement count and remove wrong choice and store it under wrong choice once choice is zero
       	}else{
       		count -= 1;
 	      	$("#wrong-letters").append($(this).attr("data-letter")); //FIXED!
-	      	console.log(count);
 	        if(count==0){
 	        	$("#buttons").remove();
-	        	$("#title").text("Life is too short");
-	        	$("#title").append("<br><button onclick='reloadPage()'>Play Again!</button>");
+	        	$("#title").text("Life is too short"); //Game over
+	        	$("#title").append("<br><button onclick='reloadPage()'>Play Again!</button>");//Restart game
 	        }
-	      	$(this).remove();
+	      	$(this).remove(); //Removes letters choices leftover
       	}
       	
       	
 	})
 };
 
+//Randomly chooses word and convert it to upper case
 function chooseWord () {
     var word = words[Math.floor(Math.random() * words.length)];
     hiddenWord(word.toUpperCase());
 }
 
-function hiddenWord (word) {  
+//Creates the span element with the underscore for each letter of the hidden word
+function hiddenWord (word) {
+  //Splits the string between each character
 	$.each(word.split(""), function (i, el) {
-        $("#blank-word").append("<span id='hidden-letter-" + el + "'>_</span");
+        $("#blank-word").append("<span id='hidden-letter-" + el + "'>_ </span");
     });
 	
  }
 
+ //Reloads page
  function reloadPage() {
     location.reload();
 }

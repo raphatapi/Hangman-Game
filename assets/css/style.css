@@ -5,6 +5,10 @@ body {
 	background-size: 100%;
 }
 
+hr {
+	margin: 10px 0;
+}
+
 h1 {
 	font-family: 'Creepster', cursive;
 }
@@ -14,45 +18,43 @@ h5 {
 }
 
 p {
-	margin: 0;
+	margin-bottom: 0!important;
 	font-family: 'Creepster', cursive;
 	font-size: large;
 }
 
-.jumbotron{
-	padding: 10px;
+#title {
+	margin: 10px 0;
 }
 
-.container-fluid {
+.greeting {
+	margin-top: 10px;
+}
+
+.jumbotron{
+	padding: 10px;
+	margin-bottom: 10px;
+	height: 220px;
+}
+
+.play {
 	background-color: #c8c8c8;
 }
 
-.page-header {
-	max-height: 50px;
-	margin: 50px auto;
-	color: white;
-	text-align: center;
-	font-size: 36px;
-	width: 460px;
-	border-bottom: solid white 1px;
-}
-
-.main-content {
-	width: 460px;
-	padding: 15px;
-	margin: auto;
-	height: 400px;
-	position: relative;
-	overflow: hidden;
-	background-color: #df8109;
-}
-
-.gap {
-	height: 30px;
-}
-
 .buttons-wrap {
-	margin: 100px 0;
+	margin: 50px 0;
+}
+
+.letter-button {
+	padding: 5px 15px;
+}
+
+#wrong-letters {
+	font-size: large;
+}
+
+#blank-word {
+	font-size: large;
 }
 
 footer {
