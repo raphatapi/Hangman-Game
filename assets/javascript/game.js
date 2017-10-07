@@ -2,20 +2,22 @@
 var words = ["strange", "eerie", "wraith", "specter", "haunt", "uncanny", "eldritch", "weird", "bizarre", "dreadful", "terror"];
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var userGuesses = [];
-var count = 10;
+var count = 6;
 
 $(document).ready(function() {     
 
   var audioElement = document.createElement("audio");
       audioElement.setAttribute("src", "assets/songs/clockwork.mp3");
+      audioElement.play();
+      $("#theme-button").text("Pause Music");
 
-        $("#theme-button").on("click", function() {
+    $("#theme-button").on("click", function() {
           if (!audioElement.paused) {
             audioElement.pause();           
             $("#theme-button").text("Play Music");
         } else {
             audioElement.play();           
-          $("#theme-button").text("Stop Music");
+          $("#theme-button").text("Pause Music");
       }
   });
 });
@@ -34,14 +36,18 @@ function createLetterButtons() {
 
       $(".letter-button").on("click", function(){
       	if($("*#hidden-letter-" + $(this).attr("data-letter")).length !== 0){
-      		console.log(this);
-      		console.log("found 1");
       		$("*#hidden-letter-" + $(this).attr("data-letter")).text($(this).attr("data-letter"));
-      		$(this).remove();
+          $(this).remove();
+          if($("#blank-word").children().text().indexOf("_") == -1){
+          $("#buttons").remove();
+          $("#title").text("Maybe death isn't the end");
+          $("#title").append("<br><button onclick='reloadPage()'>Play Again!</button>");
+          }
+      		
       		//End the game if word is correct!
       	}else{
       		count -= 1;
-	      	$("#wrong-letters").append($(this).attr("data-letter")); //Need to fix this shit!
+	      	$("#wrong-letters").append($(this).attr("data-letter")); //FIXED!
 	      	console.log(count);
 	        if(count==0){
 	        	$("#buttons").remove();
@@ -62,7 +68,7 @@ function chooseWord () {
 
 function hiddenWord (word) {  
 	$.each(word.split(""), function (i, el) {
-        $("#blank-word").append("<span id='hidden-letter-" + el + "'>_ </span");
+        $("#blank-word").append("<span id='hidden-letter-" + el + "'>_</span");
     });
 	
  }

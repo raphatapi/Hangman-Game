@@ -16,14 +16,14 @@
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
 <body>
-	<audio id="foobar" src="assets/songs/clockwork.mp3" preload="auto"></audio>
+	<!-- <audio id="foobar" src="assets/songs/clockwork.mp3" preload="auto"></audio> -->
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 				<div class="jumbotron">
 					<h1 id="title" class="font-effect-3d-float text-center"><strong>Hangman Game</strong></h1>
 					<div class="text-center">
-						<button id="theme-button" class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>
+						<button id="theme-button" class="btn btn-default btn-xs pause-button"></button>
 					</div>
 					<hr>
 					<h4 class="text-right">“When you reach the end of your rope, tie a knot and hang on.”</h4>
@@ -45,7 +45,7 @@
 			</div>	
 		</div>
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="buttons-wrap">
 					<div id="buttons"></div>
 				</div>
@@ -57,4 +57,14 @@
 	createLetterButtons();
 </script>
 </body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<footer>
+					<span><p>&#169;Copyright Tapioca 2017</p></span>
+				</footer>
+			</div>
+		</div>
+	</div>
+	
 </html>
