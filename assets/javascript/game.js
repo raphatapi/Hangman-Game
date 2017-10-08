@@ -52,7 +52,7 @@ function createLetterButtons() {
           //End game when last correct letter is chosen
         if($("#blank-word").children().text().indexOf("_ ") == -1){
           $("#buttons").remove();
-          $("#title").text("Maybe death isn't the end"); //User wins
+          $("#title").text("Death isn't the end"); //User wins
           $("#play").append("<br><button onclick='reloadPage()'>Play Again!</button>"); //Restart game
           }
       		//Decrement count and remove wrong choice and store it under wrong choice once choice is zero
