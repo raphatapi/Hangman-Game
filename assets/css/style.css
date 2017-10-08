@@ -37,10 +37,6 @@ p {
 	height: 220px;
 }
 
-.play {
-	background-color: #c8c8c8;
-}
-
 .buttons-wrap {
 	margin: 50px 0;
 }
@@ -57,6 +53,10 @@ p {
 	font-size: large;
 }
 
+#play {
+	font-size: x-large;
+}
+
 footer {
 	position: fixed;
 	width: 100%;
@@ -64,7 +64,7 @@ footer {
 	padding: 10px 0;
 	bottom: 0;
 	left: 0;
-	background-color: #eeeeee;
+	background-color: #c8c8c8;
 }
 
 @media (max-width: 768px) {
@@ -75,9 +75,13 @@ footer {
 	  -o-background-size: cover;
 	  background-size: cover;
 	}
+
+	h1 {
+		font-size: 50px;
+	}
 }
 
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
 	body {
 		background-image: url("../../assets/images/tree.gif") no-repeat center center bottom fixed; 
 	  -webkit-background-size: cover;
@@ -85,9 +89,13 @@ footer {
 	  -o-background-size: cover;
 	  background-size: cover;
 	}
+
+	.jumbotron {
+		padding: 15px!important;
+	}
 }
 
-@media (min-width: 992px) {
+@media only screen and (min-width: 992px) {
 	body {
 		background-image: url("../../assets/images/tree.gif") no-repeat center center fixed; 
 	  -webkit-background-size: cover;
@@ -97,7 +105,7 @@ footer {
 	}
 }
 
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
 	body {
 		background-image: url("../../assets/images/tree.gif") no-repeat center center fixed; 
 	  -webkit-background-size: cover;

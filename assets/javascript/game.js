@@ -3,6 +3,7 @@
 var words = ["strange", "eerie", "wraith", "specter", "haunt", "uncanny", "eldritch", "weird", "bizarre", "dreadful", "terror"];
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var count = 6;
+var userGuess;
 
 //Start music when page loads
 $(document).ready(function() {
@@ -23,9 +24,12 @@ $(document).ready(function() {
         } else {
             audioElement.play();           
           $("#theme-button").text("Pause Music");
-      }
-  });
+        }
+      });
+  chooseWord();
+  createLetterButtons();
 });
+
 
 //Create letter buttons (Fridge Game)
 function createLetterButtons() {
@@ -49,7 +53,7 @@ function createLetterButtons() {
         if($("#blank-word").children().text().indexOf("_ ") == -1){
           $("#buttons").remove();
           $("#title").text("Maybe death isn't the end"); //User wins
-          $("#title").append("<br><button onclick='reloadPage()'>Play Again!</button>"); //Restart game
+          $("#play").append("<br><button onclick='reloadPage()'>Play Again!</button>"); //Restart game
           }
       		//Decrement count and remove wrong choice and store it under wrong choice once choice is zero
       	}else{
@@ -58,7 +62,7 @@ function createLetterButtons() {
 	        if(count==0){
 	        	$("#buttons").remove();
 	        	$("#title").text("Life is too short"); //Game over
-	        	$("#title").append("<br><button onclick='reloadPage()'>Play Again!</button>");//Restart game
+	        	$("#play").append("<br><button onclick='reloadPage()'>Play Again!</button>");//Restart game
 	        }
 	      	$(this).remove(); //Removes letters choices leftover
       	}
