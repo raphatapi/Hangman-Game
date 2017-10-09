@@ -53,32 +53,35 @@ function createLetterButtons() {
       //Add click event to the letter buttons
       $(".letter-button").on("click", function(){
         // * selects all hidden letters that match user input
-        //If any matches are found the length will be greater than 0
+        //If any matches are found, the length will be greater than 0
       	if($("*#hidden-letter-" + $(this).attr("data-letter")).length !== 0){ 
           console.log($("*#hidden-letter-" + $(this).attr("data-letter")).length)
+          //Change _ to matched data letter value
       		$("*#hidden-letter-" + $(this).attr("data-letter")).text($(this).attr("data-letter"));
-          $(this).remove();//Removes button from the DOM
+          //Removes button from the DOM
+          $(this).remove();
 
-          //End game when last correct letter is chosen
+          //End game when last correct letter is chosen when there is no more _
         if($("#blank-word").children().text().indexOf("_ ") == -1){
           $("#buttons").remove();
-          $("#title").text("Death isn't the end"); //User wins
+          $("#title").text("You live"); //User wins
           $("#play").append("<br><button onclick='reloadPage()'>Play Again!</button>"); //Restart game
           }
-          //Wrong guess and check if user lost
-      		//Decrement count and remove wrong choice and store it under wrong choice once choice is zero
+          
       	}else{
+          //Wrong guess
+          //Decrement count and remove wrong choice and store it under wrong-letters
       		count -= 1;
-
 	      	$("#wrong-letters").append($(this).attr("data-letter")); //FIXED!
+          //Display countdown
           $("#count").text(count);
+          //Check if user lost (count is 0) 
 	        if(count==0){
-            //Set all children that have text = _ to their hidden letter value
-            //
+            //Reveal answer
 
-            $("#blank-word").replaceWith(answer);
+            $("#blank-word").replaceWith('<div class="answer">' + answer + '</div');
 	        	$("#buttons").remove();
-	        	$("#title").text("Life is too short"); //Game over
+	        	$("#title").text("Life is short"); //Game over
 	        	$("#play").append("<br><button onclick='reloadPage()'>Play Again!</button>");//Restart game
 	        }
 	      	$(this).remove(); //Removes letters choices leftover
@@ -92,13 +95,14 @@ function createLetterButtons() {
 function chooseWord () {
     var word = words[Math.floor(Math.random() * words.length)];
     answer = word.toUpperCase();
-    hiddenWord(word.toUpperCase());
+    hiddenWord(answer);
 }
 
 //Creates the span element with the underscore for each letter of the hidden word
 function hiddenWord (word) {
-  //Splits the string between each character
+  //Split a string into an array of letters
 	$.each(word.split(""), function (i, el) {
+    //For each letter in the word, create a span with the atribute data-letter = letter and a text of "_ "
         $("#blank-word").append("<span id='hidden-letter-" + el + "'>_ </span");
     });
 	

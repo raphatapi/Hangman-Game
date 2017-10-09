@@ -57,6 +57,10 @@ p {
 	font-size: x-large;
 }
 
+.answer {
+	font-size: large;
+}
+
 footer {
 	position: fixed;
 	width: 100%;
